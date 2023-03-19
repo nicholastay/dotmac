@@ -1,0 +1,35 @@
+# Ignore all
+/*
+
+
+# Exclusions
+# Allow dotfiles in ~, but don't allow folders starting with dot
+!.*
+.*/
+
+# Folders (and their subdirs)
+!/.config/
+
+# Ignore back again
+.DS_Store
+/.config/aliasrc.work
+/.config/git/config.work
+/.config/nvim/.netrwhist
+/.config/rgs
+/.config/iterm2
+/.Xauthority
+/.xsession-errors
+/.viminfo
+/.bash_history
+/.bash_logout
+/.j_*
+*.tmp
+*.bak
+/.python_history*
+/.pypirc
+*.*~
+/.zsh_history
+/.zcompdump
+/.CFUserTextEncoding
+/.node_repl_history
+/.localized

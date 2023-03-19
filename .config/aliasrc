@@ -1,0 +1,56 @@
+# Nick's light shell aliases
+
+# General utility
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias ll="ls -lah"
+
+# Utility colours
+alias grep="grep --color=auto"
+alias ls="ls -G"
+alias diff="diff --color=auto"
+
+# dotfiles management
+alias d="git --git-dir=$HOME/.dotmac.git --work-tree=$HOME"
+
+# Shortcuts
+alias v="$EDITOR"
+alias vi="$EDITOR"
+alias vim="$EDITOR"
+alias g="git"
+
+# Utility quick commands
+alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
+alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
+alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
+alias flushdns="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+# Packages
+alias bI="brew install"
+alias bIc="brew install --cask"
+alias bR="brew uninstall"
+alias bU="brew upgrade"
+alias bQ="brew list"
+alias bQc="brew list --cask"
+
+# Utility functions
+# Fuzzy find file + open in editor
+vf() { fzf | xargs -r -I % $EDITOR % ;}
+
+# Config files
+alias cfb="$EDITOR $HOME/.bashrc"
+alias cfz="$EDITOR $HOME/.zshrc"
+alias cfzp="$EDITOR $HOME/.zprofile"
+alias cfp="$EDITOR $HOME/.profile"
+alias cfv="$EDITOR $HOME/.config/nvim"
+alias cfa="$EDITOR $HOME/.config/aliasrc"
+alias cfg="$EDITOR $HOME/.config/git/config"
+alias cfs="$EDITOR $HOME/.ssh/config"
+
+alias pyd="python -i ./_dev.py"
+alias k="kubectl"
+alias h="helm"
+alias ki="kinit"
+alias kif="kinit -f"
+
+[ -f $HOME/.config/aliasrc.work ] && . $HOME/.config/aliasrc.work
