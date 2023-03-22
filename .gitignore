@@ -9,6 +9,7 @@
 
 # Folders (and their subdirs)
 !/.config/
+!/.local/
 
 # Ignore back again
 .DS_Store
@@ -17,6 +18,8 @@
 /.config/nvim/.netrwhist
 /.config/rgs
 /.config/iterm2
+/.local/*
+!/.local/ntay
 /.Xauthority
 /.xsession-errors
 /.viminfo
