@@ -46,7 +46,9 @@
 	cam = commit -a -m
 	camd = commit --amend
 	d = diff
+	dt = difftool
 	dc = diff --cached
+	dtc = difftool --cached
 	l = log
 	m = merge
 	md = merge development
@@ -69,3 +71,9 @@
 	rebase = true
 [commit]
 	verbose = true
+[difftool]
+    prompt = false
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
