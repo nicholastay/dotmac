@@ -47,6 +47,9 @@ alias cfa="$EDITOR $HOME/.config/aliasrc"
 alias cfg="$EDITOR $HOME/.config/git/config"
 alias cfs="$EDITOR $HOME/.ssh/config"
 
+alias cdc="cd $HOME/.config"
+alias cdln="cd $HOME/.local/ntay"
+
 alias pyd="python -i ./_dev.py"
 alias k="kubectl"
 alias h="helm"

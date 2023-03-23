@@ -1,6 +1,7 @@
 tap "homebrew/core"
 tap "caskroom/cask"
 tap "homebrew/bundle"
+tap "nicholastay/tap"
 
 
 # Key utilities
@@ -38,3 +39,4 @@ brew "imagemagick"
 brew "mtr"
 brew "ranger"
 brew "rlwrap"
+brew "passgen"
