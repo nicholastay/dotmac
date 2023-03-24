@@ -94,10 +94,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2
 }
 
 
-
-# macOS specific
-export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
-
 # Completion via brew
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

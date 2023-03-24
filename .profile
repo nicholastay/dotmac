@@ -5,6 +5,7 @@
 export PATH=$PATH:$HOME/.local/bin
 
 # PATH additions for brew
+[ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
 export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:${HOMEBREW_PREFIX}/opt/openjdk/bin:$PATH"
 
 # Programs

@@ -56,4 +56,11 @@ alias h="helm"
 alias ki="kinit"
 alias kif="kinit -f"
 
+emacs() {
+	echo "zsh: command not found: emacs"
+	echo -n "did you mean vim? [Y/n] "
+	read yn
+	([ -z "$yn" ] || [ "$yn" = "y" ] || [ "$yn" = "Y" ]) && vim $@
+}
+
 [ -f $HOME/.config/aliasrc.work ] && . $HOME/.config/aliasrc.work
