@@ -4,6 +4,9 @@
 
 export PATH=$PATH:$HOME/.local/bin
 
+# PATH additions for brew
+export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:${HOMEBREW_PREFIX}/opt/openjdk/bin:$PATH"
+
 # Programs
 command -v nvim >/dev/null \
 	&& export EDITOR="nvim" \
@@ -16,11 +19,3 @@ export LESSHISTFILE="-"
 
 # Tool config
 export FZF_DEFAULT_OPTS="--layout=reverse --height 85%"
-
-# macOS
-eval $(/opt/homebrew/bin/brew shellenv)
-export PATH="$HOME/.pyenv/bin:/opt/homebrew/opt/openjdk/bin:$PATH"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
