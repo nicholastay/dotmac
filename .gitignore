@@ -18,6 +18,8 @@
 /.config/nvim/.netrwhist
 /.config/rgs
 /.config/iterm2
+# ignore iterm2 prefs, add with -f since may have sensitive work stuff
+/.config/iterm2-prefs/com.googlecode.iterm2.plist
 /.local/*
 !/.local/ntay
 /.Xauthority
