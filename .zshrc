@@ -22,6 +22,14 @@ setopt nomenucomplete
 # For prompt vars
 setopt prompt_subst
 
+# No history duplicates
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 # Use vim keys
 bindkey -v
 KEYTIMEOUT=1
@@ -74,6 +82,9 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 bindkey '^K' autosuggest-execute
+
+# FZF History plugin
+source $HOME/.local/share/zsh/plugin/zsh-fzf-history-search/zsh-fzf-history-search.zsh 2>/dev/null
 
 # VCS
 add-zsh-hook precmd vcs_info

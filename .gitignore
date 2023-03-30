@@ -11,8 +11,15 @@
 !/.config/
 !/.local/
 
+
 # Ignore back again
+# General
 .DS_Store
+*.tmp
+*.bak
+*.*~
+
+# .config
 /.config/aliasrc.work
 /.config/git/config.work
 /.config/nvim/.netrwhist
@@ -20,19 +27,23 @@
 /.config/iterm2
 # ignore iterm2 prefs, add with -f since may have sensitive work stuff
 /.config/iterm2-prefs/com.googlecode.iterm2.plist
+
+# .local
 /.local/*
 !/.local/ntay
+!/.local/share
+/.local/share/*
+!/.local/share/zsh
+
+# Bare home files
 /.Xauthority
 /.xsession-errors
 /.viminfo
 /.bash_history
 /.bash_logout
 /.j_*
-*.tmp
-*.bak
 /.python_history*
 /.pypirc
-*.*~
 /.zsh_history
 /.zcompdump
 /.CFUserTextEncoding
