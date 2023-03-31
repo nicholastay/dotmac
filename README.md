@@ -3,7 +3,7 @@
 macOS dotfiles. too many specific things so I decided to split it out. oh well. not supported.
 
 ```
-$ git clone --bare https://github.com/nicholastay/dotmac.git ~/.dotmac.git
+$ git clone --bare --recursive https://github.com/nicholastay/dotmac.git ~/.dotmac.git
 $ git --git-dir=$HOME/.dotmac.git/ --work-tree=$HOME checkout
 
 # Install brew packages via bundle
@@ -15,4 +15,7 @@ $ defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool tru
 
 # Any dotfiles-related git operations
 $ d ...
+
+# Update dotfiles (alias recurses submodules)
+$ d pl
 ```
