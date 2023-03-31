@@ -7,8 +7,11 @@ alias ll="ls -lah"
 
 # Utility colours
 alias grep="grep --color=auto"
-alias ls="ls -G"
 alias diff="diff --color=auto"
+# macOS coreutils things
+command -v gls >/dev/null \
+	&& alias ls="gls --color=always --group-directories-first --hyperlink=auto" \
+	|| alias ls="ls -G"
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotmac.git --work-tree=$HOME"
