@@ -5,8 +5,8 @@ PROMPT='%F{015}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/../%3~|%4~)%F{68}${v
 
 # History
 HISTFILE="$HOME/.local/share/zsh_history"
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=500000
+SAVEHIST=500000
 
 # Some misc options
 setopt auto_cd
@@ -29,6 +29,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
+
+# Save history immediately rather than on exit
+setopt INC_APPEND_HISTORY
 
 # Use vim keys
 bindkey -v
@@ -73,6 +76,22 @@ zle-line-init() {
 	echo -ne "\e[6 q"
 }
 zle -N zle-line-init
+
+# Dynamic xtitle
+# https://wiki.archlinux.org/index.php/Zsh#xterm_title
+autoload -Uz add-zsh-hook
+function xterm_title_precmd () {
+	print -Pn -- '\e]2;%n@%m:%~\a'
+	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-}\e\\'
+}
+function xterm_title_preexec () {
+	print -Pn -- '\e]2;' && print -n -- "${(q)1}\a"
+	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+}
+if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*|st*|alacritty*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
 
 autoload -Uz add-zsh-hook vcs_info
 
@@ -121,4 +140,3 @@ compinit -C
 
 # Load our common aliases
 source $HOME/.config/aliasrc
-
