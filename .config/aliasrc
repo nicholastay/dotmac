@@ -3,7 +3,12 @@
 # General utility
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias ll="ls -lah"
+alias ll="ls -lh"
+alias la="ls -ah"
+alias lla="ls -lah"
+alias lsd="ls -d"
+alias pbc="pbcopy"
+command -v gsed >/dev/null && alias sed="gsed"
 
 # Utility colours
 alias grep="grep --color=auto"
@@ -52,6 +57,7 @@ alias cfs="$EDITOR $HOME/.ssh/config"
 
 alias cdc="cd $HOME/.config"
 alias cdln="cd $HOME/.local/ntay"
+alias cdd="cd $HOME/Dev"
 
 alias pyd="python -i ./_dev.py"
 alias k="kubectl"

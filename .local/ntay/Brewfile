@@ -40,4 +40,8 @@ brew "mtr"
 brew "ranger"
 brew "rlwrap"
 brew "passgen"
+
+# GNU variant tools (nice to have via 'g' prefix)
 brew "coreutils"
+brew "diffutils"
+brew "gnu-sed"
