@@ -19,4 +19,4 @@ export FILE="ranger"
 export LESSHISTFILE="-"
 
 # Tool config
-export FZF_DEFAULT_OPTS="--layout=reverse --height 85%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 50%"

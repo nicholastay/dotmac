@@ -50,6 +50,7 @@
 	dc = diff --cached
 	dtc = difftool --cached
 	l = log
+	lg = log --pretty=onelinedetail
 	m = merge
 	md = merge development
 	mm = merge master
@@ -77,3 +78,7 @@
     tool = nvimdiff
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[pretty]
+	onelinedetail = %C(bold red)%h %Creset%s %C(bold green)%aN %C(bold blue)(%ar)%Creset%C(yellow)%d%Creset
+[http]
+	emptyAuth = true
