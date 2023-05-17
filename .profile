@@ -2,11 +2,11 @@
 # Quite a lot of exports cut down, as we don't include the X programs ones here,
 # just enough for cli
 
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$PATH
 
 # PATH additions for brew
 [ -d "/opt/homebrew" ] && eval $(/opt/homebrew/bin/brew shellenv)
-export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:${HOMEBREW_PREFIX}/opt/openjdk/bin:$PATH"
+export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 
 # Programs
 command -v nvim >/dev/null \
