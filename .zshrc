@@ -37,6 +37,11 @@ setopt INC_APPEND_HISTORY
 bindkey -v
 KEYTIMEOUT=1
 
+# Edit command line with $VISUAL
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Vim key fixes
 # Backspace in viins
 bindkey -v '^?' backward-delete-char
@@ -78,17 +83,15 @@ zle-line-init() {
 zle -N zle-line-init
 
 # Dynamic xtitle
-# https://wiki.archlinux.org/index.php/Zsh#xterm_title
+# based on https://wiki.archlinux.org/index.php/Zsh#xterm_title
 autoload -Uz add-zsh-hook
 function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m:%~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-}\e\\'
+	print -Pn -- '\033]0;%n@%m:%~\007'
 }
 function xterm_title_preexec () {
-	print -Pn -- '\e]2;' && print -n -- "${(q)1}\a"
-	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-}:\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+	print -n -- "\033]0;${(q)1}\007"
 }
-if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*|st*|alacritty*) ]]; then
+if [[ "$TERM" == (xterm*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
