@@ -33,6 +33,17 @@ return require("packer").startup(function(use)
 			require("lualine").setup {
 				theme = "tokyonight",
 				icons_enabled = false,
+				tabline = {
+					lualine_b = {
+						"buffers",
+					},
+					lualine_c = {
+						{
+							"filename",
+							path = 1,
+						}
+					},
+				},
 				sections = {
 					lualine_x = {
 						"encoding",
@@ -97,6 +108,9 @@ return require("packer").startup(function(use)
 
 	-- Multi-cursors
 	use("mg979/vim-visual-multi")
+
+	-- Auto detect indentation
+	use("Darazaki/indent-o-matic")
 
 	-- Show indentation levels with vertical bars
 	use("lukas-reineke/indent-blankline.nvim")
