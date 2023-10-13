@@ -14,9 +14,10 @@
 	f = fetch
 	fo = fetch origin
 	s = status
+	st = status
 	su = status --untracked-files=normal
 	sua = status -u
-	st = stash
+	sth = stash
 	stm = stash -m
 	stp = stash pop
 	stpp = "!git stash pop \"$(git stash list | fzf | cut -d ':' -f 1)\""
@@ -41,6 +42,7 @@
 	cot = checkout --track
 	cott = "!git checkout --track \"$(git for-each-ref --format='%(refname:short)' refs/remotes/ | fzf)\""
 	c = commit
+	ci = commit
 	ca = commit -a
 	cm = commit -m
 	cam = commit -a -m
