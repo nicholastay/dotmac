@@ -39,13 +39,14 @@
 /.Xauthority
 /.xsession-errors
 /.viminfo
-/.bash_history
 /.bash_logout
 /.j_*
-/.python_history*
 /.pypirc
 /.zsh_history
 /.zcompdump
 /.CFUserTextEncoding
 /.node_repl_history
 /.localized
+/.netrc
+/.*_history*
+/.npmrc
