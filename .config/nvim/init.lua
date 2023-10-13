@@ -13,7 +13,7 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
 
-vim.opt.tabstop = 4
+vim.opt.tabstop = 8
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 
@@ -65,4 +65,8 @@ vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.setqflist()<CR>")
 vim.cmd [[
     autocmd FileType gitcommit set textwidth=72
 	autocmd FileType gitcommit set colorcolumn=73
+
+    autocmd BufNewFile,BufRead cronjobs.* set filetype=crontab
 ]]
+
+vim.keymap.set("n", "<leader>-", ':w|bd<cr>')
