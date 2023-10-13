@@ -8,14 +8,16 @@ alias la="ls -ah"
 alias lla="ls -lah"
 alias lsd="ls -d"
 alias pbc="pbcopy"
+alias reveal="open -R"
 command -v gsed >/dev/null && alias sed="gsed"
 
 # Utility colours
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+alias tree="tree -C"
 # macOS coreutils things
 command -v gls >/dev/null \
-	&& alias ls="gls --color=always --group-directories-first --hyperlink=auto" \
+	&& alias ls="gls --color=always --group-directories-first" \
 	|| alias ls="ls -G"
 
 # dotfiles management
@@ -45,6 +47,11 @@ alias bQc="brew list --cask"
 # Fuzzy find file + open in editor
 vf() { fzf | xargs -r -I % $EDITOR % ;}
 
+alias srcb="source $HOME/.bashrc"
+alias srcz="source $HOME/.zshrc"
+alias srcp="source $HOME/.profile"
+alias srca="source $HOME/.config/aliasrc"
+
 # Config files
 alias cfb="$EDITOR $HOME/.bashrc"
 alias cfz="$EDITOR $HOME/.zshrc"
@@ -58,12 +65,21 @@ alias cfs="$EDITOR $HOME/.ssh/config"
 alias cdc="cd $HOME/.config"
 alias cdln="cd $HOME/.local/ntay"
 alias cdd="cd $HOME/Dev"
+alias cdn="cd $HOME/Notes"
+
+NOTES_DIR="$HOME/Notes"
+nn() {
+	[ -z "$1" ] && $EDITOR "$NOTES_DIR/notes.md" && return
+	x="$(cd "$NOTES_DIR" && find * -type f | fzf -1 -e -q "$*")"
+	[ ! -z "$x" ] && $EDITOR "$NOTES_DIR/$x"
+}
 
 alias pyd="python -i ./_dev.py"
 alias k="kubectl"
 alias h="helm"
 alias ki="kinit"
 alias kif="kinit -f"
+alias tn1="tail -n+1"
 
 emacs() {
 	echo "zsh: command not found: emacs"
