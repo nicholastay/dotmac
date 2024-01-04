@@ -1,12 +1,12 @@
 # Nick's light .zshrc
 
 # Setup the prompt (PS1)
-PROMPT='%F{015}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/../%3~|%4~)%F{68}${vcs_info_msg_0_}%f » '
+PROMPT='%F{037}%n%f%F{243}@%f%F{176}%m%f%F{243}:%f%(5~|%-1~/../%3~|%4~)%F{68}${vcs_info_msg_0_}%f » '
 
 # History
 HISTFILE="$HOME/.local/share/zsh_history"
-HISTSIZE=500000
-SAVEHIST=500000
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 # Some misc options
 setopt auto_cd
@@ -29,9 +29,10 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
-
 # Save history immediately rather than on exit
 setopt INC_APPEND_HISTORY
+# Store history including times
+setopt EXTENDED_HISTORY
 
 # Use vim keys
 bindkey -v
@@ -121,9 +122,9 @@ zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 # Must be loaded last
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null && { \
 	# Add some color changes from the default green (to lighter)
-	ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
-	ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
-	ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
+	# ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=114,underline
+	# ZSH_HIGHLIGHT_STYLES[precommand]=fg=114,underline
+	# ZSH_HIGHLIGHT_STYLES[arg0]=fg=114
 }
 
 

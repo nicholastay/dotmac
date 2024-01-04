@@ -110,7 +110,7 @@ return require("packer").startup(function(use)
 	use("mg979/vim-visual-multi")
 
 	-- Auto detect indentation
-	use("Darazaki/indent-o-matic")
+	use("tpope/vim-sleuth")
 
 	-- Show indentation levels with vertical bars
 	use("lukas-reineke/indent-blankline.nvim")

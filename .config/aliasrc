@@ -34,6 +34,7 @@ alias mem="ps axch -o cmd:15,%mem --sort=-%mem | sed 10q"
 alias cpu="ps axch -o cmd:15,%cpu --sort=-%cpu | sed 10q"
 alias rcp="rsync -vzrh --times --stats --progress --itemize-changes"
 alias flushdns="dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias qr="qrencode -t ansiutf8"
 
 # Packages
 alias bI="brew install"
