@@ -106,8 +106,12 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 bindkey '^K' autosuggest-execute
 
-# FZF History plugin
-source $HOME/.local/share/zsh/plugin/zsh-fzf-history-search/zsh-fzf-history-search.zsh 2>/dev/null
+# Use sqlite history
+HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
+source $HOME/.local/share/zsh/plugin/zsh-histdb/sqlite-history.zsh
+source $HOME/.local/share/zsh/plugin/zsh-histdb-fzf/fzf-histdb.zsh
+HISTDB_FZF_DEFAULT_MODE=3
+bindkey '^R' histdb-fzf-widget
 
 # VCS
 add-zsh-hook precmd vcs_info

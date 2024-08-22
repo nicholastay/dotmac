@@ -1,3 +1,6 @@
-[submodule ".local/share/zsh/plugin/zsh-fzf-history-search"]
-	path = .local/share/zsh/plugin/zsh-fzf-history-search
-	url = https://github.com/joshskidmore/zsh-fzf-history-search
+[submodule ".local/share/zsh/plugin/zsh-histdb"]
+	path = .local/share/zsh/plugin/zsh-histdb
+	url = https://github.com/larkery/zsh-histdb
+[submodule ".local/share/zsh/plugin/zsh-histdb-fzf"]
+	path = .local/share/zsh/plugin/zsh-histdb-fzf
+	url = https://github.com/m42e/zsh-histdb-fzf
