@@ -9,7 +9,6 @@ alias lla="ls -lah"
 alias lsd="ls -d"
 alias pbc="pbcopy"
 alias reveal="open -R"
-command -v gsed >/dev/null && alias sed="gsed"
 
 # Utility colours
 alias grep="grep --color=auto"
@@ -19,6 +18,8 @@ alias tree="tree -C"
 command -v gls >/dev/null \
 	&& alias ls="gls --color=always --group-directories-first" \
 	|| alias ls="ls -G"
+command -v gawk >/dev/null && alias awk="gawk"
+command -v gsed >/dev/null && alias sed="gsed"
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotmac.git --work-tree=$HOME"
@@ -27,6 +28,7 @@ alias d="git --git-dir=$HOME/.dotmac.git --work-tree=$HOME"
 alias v="$EDITOR"
 alias vi="$EDITOR"
 alias vim="$EDITOR"
+alias vimdiff="nvim -d"
 alias g="git"
 
 # Utility quick commands
@@ -80,7 +82,7 @@ alias k="kubectl"
 alias h="helm"
 alias ki="kinit"
 alias kif="kinit -f"
-alias tn1="tail -n+1"
+alias tn1="tail -n+1 -v"
 
 emacs() {
 	echo "zsh: command not found: emacs"
@@ -88,5 +90,27 @@ emacs() {
 	read yn
 	([ -z "$yn" ] || [ "$yn" = "y" ] || [ "$yn" = "Y" ]) && vim $@
 }
+
+# concept from https://news.ycombinator.com/item?id=38769352
+alias ::='sed "$ s/\n$//" | xargs -S1024 -I{} --'
+col() { eval "awk '{ print \$$1 }'" ;}
+skip() { tail -n +$(($1 + 1)) ;}
+take() { head -n $1 ;}
+
+dcol() { eval "awk -F$2 '{ print \$$1 }'" ;}
+replace() { tr "$1" "$2" | sed "s/$2\$//" ;}
+commas() { replace "\n" "," ;}
+
+path1() { dcol 1 '/' ;}
+
+ts() {
+	[ -z "$1" ] && { gdate +%s%N | sed 's/./&./10'; return; }
+	gdate -d "@$(echo "$1" | sed '/^[0-9]\{10\}\([0-9]\{3\}\)\{1,3\}$/ s/./&./10')"
+}
+alias tkr="TZ=Asia/Seoul "
+alias tjp="TZ=Asia/Tokyo "
+alias thk="TZ=Asia/Hong_Kong "
+alias tchi="TZ=America/Chicago "
+alias tutc="TZ=UTC "
 
 [ -f $HOME/.config/aliasrc.work ] && . $HOME/.config/aliasrc.work
