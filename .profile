@@ -20,4 +20,5 @@ export FILE="ranger"
 export LESSHISTFILE="-"
 
 # Tool config
-export FZF_DEFAULT_OPTS="--layout=reverse --height 50%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 50% --color light"
+export SKIM_DEFAULT_OPTIONS="--layout=reverse --height 50% --color light"
