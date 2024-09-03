@@ -22,6 +22,7 @@ setopt nomenucomplete
 # For prompt vars
 setopt prompt_subst
 
+# History stuff - NOTE: less relevant due to atuin use these days.
 # No history duplicates
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -106,12 +107,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 bindkey '^K' autosuggest-execute
 
-# Use sqlite history
-HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
-source $HOME/.local/share/zsh/plugin/zsh-histdb/sqlite-history.zsh
-source $HOME/.local/share/zsh/plugin/zsh-histdb-fzf/fzf-histdb.zsh
-HISTDB_FZF_DEFAULT_MODE=3
-bindkey '^R' histdb-fzf-widget
+# Use sqlite history via atuin
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # VCS
 add-zsh-hook precmd vcs_info

@@ -1,6 +1,0 @@
-[submodule ".local/share/zsh/plugin/zsh-histdb"]
-	path = .local/share/zsh/plugin/zsh-histdb
-	url = https://github.com/larkery/zsh-histdb
-[submodule ".local/share/zsh/plugin/zsh-histdb-fzf"]
-	path = .local/share/zsh/plugin/zsh-histdb-fzf
-	url = https://github.com/m42e/zsh-histdb-fzf
