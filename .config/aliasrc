@@ -20,6 +20,8 @@ command -v gls >/dev/null \
 	|| alias ls="ls -G"
 command -v gawk >/dev/null && alias awk="gawk"
 command -v gsed >/dev/null && alias sed="gsed"
+command -v gpaste >/dev/null && alias paste="gpaste"
+command -v ggrep >/dev/null && alias grep="ggrep"
 
 # dotfiles management
 alias d="git --git-dir=$HOME/.dotmac.git --work-tree=$HOME"
@@ -100,6 +102,8 @@ take() { head -n $1 ;}
 dcol() { eval "awk -F$2 '{ print \$$1 }'" ;}
 replace() { tr "$1" "$2" | sed "s/$2\$//" ;}
 commas() { replace "\n" "," ;}
+piped() { replace "\n" "|" ;}
+appendl() { sed "s&\$&$1&" ;}
 
 path1() { dcol 1 '/' ;}
 
