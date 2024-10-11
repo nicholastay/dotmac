@@ -57,6 +57,24 @@ bindkey '^[[P' delete-char # st
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line # xterm
 bindkey '^[[4~' end-of-line # st
+# -- Emacs style keys back in vim mode
+# Alt-arrows - prefer per 'word' to be bash-style to hit ends
+autoload -U select-word-style
+select-word-style bash
+bindkey '^[[1;3D' backward-word
+bindkey '^[b' backward-word # iterm
+bindkey '^[[1;3C' forward-word
+bindkey '^[f' forward-word # iterm
+# Move
+bindkey '^B' backward-char
+bindkey '^F' forward-char
+# Begin/end
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+# Various others
+bindkey '^U' kill-whole-line
+bindkey '^W' backward-kill-word
+bindkey '^Y' yank
 
 # Use beam cursor
 # Code 6 for static (not blinking), also for all new prompts, do this too
