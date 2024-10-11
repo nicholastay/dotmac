@@ -116,17 +116,21 @@ if [[ "$TERM" == (xterm*) ]]; then
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
+# Completion menu selection
+zstyle ':completion:*' menu select
+
 autoload -Uz add-zsh-hook vcs_info
 
 # Autosuggestion plugin
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 bindkey '^K' autosuggest-execute
 
 # Use sqlite history via atuin
 eval "$(atuin init zsh --disable-up-arrow)"
+# Don't register atuin first because it will hallucinate hard before real completions
+ZSH_AUTOSUGGEST_STRATEGY=(completion atuin history)
 
 # VCS
 add-zsh-hook precmd vcs_info
