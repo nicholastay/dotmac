@@ -104,6 +104,10 @@ replace() { tr "$1" "$2" | sed "s/$2\$//" ;}
 commas() { replace "\n" "," ;}
 piped() { replace "\n" "|" ;}
 appendl() { sed "s&\$&$1&" ;}
+prependl() { sed "s&^&$1&" ;}
+listify() { sed 's/^/ - /' ;}
+# not the best implementation, but quick hack for lines of things -> sql IN
+tuples() { sed "s/$/',/;s/^/'/" | sed -z 's/\n/ /g;s/^/(/;s/, $/)\n/' ;}
 
 path1() { dcol 1 '/' ;}
 
@@ -117,4 +121,29 @@ alias thk="TZ=Asia/Hong_Kong "
 alias tchi="TZ=America/Chicago "
 alias tutc="TZ=UTC "
 
+mux() {
+	# NB: bash/zsh only
+	local cmds=( 'new-session' )
+	for x; do cmds+=( "$x" ';' 'select-layout' 'tiled' ';' 'split-window' ); done
+	tmux "${cmds[@]:0:-1}"
+}
+
+emoteify() {
+	[ -z "$2" ] && echo 'emoteify <input> <output>' && return 1
+	local in=$1; shift
+	local out=$1; shift
+	magick "$in" -coalesce -resize 128x128 -background none -gravity center -extent 128x128 "$@" "$out"
+}
+
+showjson() {
+	# Show JSON if interactive, or Pipe through
+	[ -t 1 ] && { jq -C | less -R ;} || cat
+}
+curllog() {
+	echo "[INFO] $1" >&2
+	curl -s "$1"
+}
+
 [ -f $HOME/.config/aliasrc.work ] && . $HOME/.config/aliasrc.work
+
+# vim: set ft=sh:
