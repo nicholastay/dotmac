@@ -65,6 +65,7 @@ bindkey '^[[1;3D' backward-word
 bindkey '^[b' backward-word # iterm
 bindkey '^[[1;3C' forward-word
 bindkey '^[f' forward-word # iterm
+bindkey '\e^?' backward-delete-word # iterm
 # Move
 bindkey '^B' backward-char
 bindkey '^F' forward-char
