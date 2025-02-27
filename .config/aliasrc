@@ -67,17 +67,22 @@ alias cfa="$EDITOR $HOME/.config/aliasrc"
 alias cfg="$EDITOR $HOME/.config/git/config"
 alias cfs="$EDITOR $HOME/.ssh/config"
 
-alias cdc="cd $HOME/.config"
+# Folders
 alias cdln="cd $HOME/.local/ntay"
-alias cdd="cd $HOME/Dev"
+alias cdwn="cd $HOME/Downloads"
 alias cdn="cd $HOME/Notes"
 
-NOTES_DIR="$HOME/Notes"
-nn() {
-	[ -z "$1" ] && $EDITOR "$NOTES_DIR/notes.md" && return
-	x="$(cd "$NOTES_DIR" && find * -type f | fzf -1 -e -q "$*")"
-	[ ! -z "$x" ] && $EDITOR "$NOTES_DIR/$x"
+# Folder quick-jump-into-a-1depth-subdir tech
+folder_fzf_cd() {
+	basedir="$1"
+	shift
+	[ -z "$1" ] && cd "$basedir" && return  # nothing = instant jump to basedir
+	[ "$1" = "-" ] && 1=""  # provide '-' to not instant jump
+	x="$(cd "$basedir" && fd . --exact-depth 1 --type d --path-separator '' | fzf -0 -1 -e -q "$*" --preview "ls --color=always {}")"
+	[ ! -z "$x" ] && cd "$basedir/$x" || echo "[WARN] Not found"
 }
+alias cdc="folder_fzf_cd $HOME/.config"
+alias cdd="folder_fzf_cd $HOME/Dev"
 
 alias pyd="python -i ./_dev.py"
 alias k="kubectl"
