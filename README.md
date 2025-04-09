@@ -1,3 +1,7 @@
+archived - consolidated into main [dotfiles](https://github.com/nicholastay/dotfiles) repo! :)
+
+---
+
 # dotmac
 
 macOS dotfiles. too many specific things so I decided to split it out. oh well. not supported.
